@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 // import logo from './logo.svg';
 import { CardList } from './components/card-list/cardlist-component';
+import { SearchBox } from './components/search-box/search-cox.component';
 import './App.css';
 
 class App extends Component {
@@ -40,18 +41,24 @@ class App extends Component {
 
     const { monsters, searchField } = this.state;
     //search filter monster name / case unsentitive
-    //include monster.name into 
+    //include monster.name into search field
+    //re render everytime theres a change onChange
+    
     const filteredMonsters = monsters.filter(monster =>
       monster.name.toLowerCase().includes(searchField.toLowerCase())
       )
   return (
     <div className="App">
-      <input type="search" placeholder='search monsters' onChange={event => {
+      {/* search component */}
+      {/* <input type="search" placeholder='search monsters' onChange={event => {
              
         this.setState({ searchField: event.target.value })} 
       }
-      />
+      /> */}
+         
+       <SearchBox placeholder="search monsters" handleChange={event => this.setState({ searchField: event.target.value })} />
       {/* enter cardlist component , the prop being used here */}
+      {/* instead of passing state monsters, pass filtered monsters */}
       <CardList monsters={filteredMonsters} />
       
     </div>
