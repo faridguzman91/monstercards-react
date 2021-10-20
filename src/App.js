@@ -8,10 +8,11 @@ class App extends Component {
   constructor() {
     super();
 
-    //state management of data
+    //state management of data trickles down to the attribute
     this.state = {
       //state = empty array
       monsters: [],
+      searchField: ''
       // searchField:''     
     };
   }
@@ -33,17 +34,26 @@ class App extends Component {
   // }
   
   render(){
+    //destructuring, making two constants
+    // const monsters = this.state
+    //const searchField = this.state
+
+    const { monsters, searchField } = this.state;
+    //search filter monster name / case unsentitive
+    //include monster.name into 
+    const filteredMonsters = monsters.filter(monster =>
+      monster.name.toLowerCase().includes(searchField.toLowerCase())
+      )
   return (
     <div className="App">
+      <input type="search" placeholder='search monsters' onChange={event => {
+             
+        this.setState({ searchField: event.target.value })} 
+      }
+      />
       {/* enter cardlist component , the prop being used here */}
-      <CardList monsters={this.state.monsters}>
-        {/* on the h1 element display mapped monster array items with id key and monster name property */}
-        
-     
-        </CardList>
-
-    
-
+      <CardList monsters={filteredMonsters} />
+      
     </div>
   );
 }
