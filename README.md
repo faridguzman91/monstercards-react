@@ -1,5 +1,8 @@
-Monster cards using a mock api with fake users
+Monster cards using a mock api with fake users, names, and emails
 https://jsonplaceholder.typicode.com/users
+
+robo hash api for random user photo
+https://robohash.org/
 
 #npm install
 #npm start
