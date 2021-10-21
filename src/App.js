@@ -16,6 +16,9 @@ class App extends Component {
       searchField: ''
       // searchField:''     
     };
+    //bind handlechange function to state
+    this.handleChange = this.handleChange.bind(this)
+   // this.handleChange = this.handleChange.bind(this);
   }
 
   //mount and load data from remote endpoint (Api)
@@ -28,6 +31,10 @@ class App extends Component {
     //fetch users ad push to array name monster
     .then(users=> this.setState({ monsters: users}))
 
+  }
+
+  handleChange (event) {
+    this.setState({ searchField: event.target.value })
   }
 
   // onSearchChange = e => {
@@ -49,6 +56,7 @@ class App extends Component {
       )
   return (
     <div className="App">
+      <h1>Monsters Rolodex</h1>
       {/* search component */}
       {/* <input type="search" placeholder='search monsters' onChange={event => {
              
@@ -56,7 +64,7 @@ class App extends Component {
       }
       /> */}
          
-       <SearchBox placeholder="search monsters" handleChange={event => this.setState({ searchField: event.target.value })} />
+       <SearchBox placeholder="search monsters" handleChange={this.handleChange} />
       {/* enter cardlist component , the prop being used here */}
       {/* instead of passing state monsters, pass filtered monsters */}
       <CardList monsters={filteredMonsters} />
