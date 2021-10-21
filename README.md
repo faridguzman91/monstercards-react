@@ -7,6 +7,10 @@ https://robohash.org/
 #npm install
 #npm start
 
+to view page
+<br>
+https://faridguzman91.github.io/monstercards-react/
+
 
 
 
